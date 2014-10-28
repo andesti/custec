@@ -75,7 +75,7 @@ public final class Adempiere
 	/** 32*32 Product Image.   	*/
 	static private final String	s_file32x32		= "images/AD32.gif";
 	/** 100*30 Product Image.  	*/
-	static private final String	s_file100x30	= "images/AD10030.png";
+	static private final String	s_file50x15	= "images/AD10030.png";
 //	static private final String	s_file100x30HR	= "images/AD10030HR.png";
 	/** 48*15 Product Image.   	*/
 	static private final String	s_file48x15		= "images/Adempiere.png";
@@ -336,7 +336,7 @@ public final class Adempiere
 		if (s_imageLogo == null)
 		{
 			Toolkit tk = Toolkit.getDefaultToolkit();
-			URL url = org.compiere.Adempiere.class.getResource(s_file100x30);
+			URL url = org.compiere.Adempiere.class.getResource(s_file50x15);//cambio
 		//	System.out.println(url);
 			if (url == null)
 				return null;
@@ -370,7 +370,7 @@ public final class Adempiere
 	{
 		if (s_imageIconLogo == null)
 		{
-			URL url = org.compiere.Adempiere.class.getResource(s_file100x30);
+			URL url = org.compiere.Adempiere.class.getResource(s_file50x15);//cambio
 		//	System.out.println(url);
 			if (url == null)
 				return null;
