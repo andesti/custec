@@ -133,7 +133,7 @@ public class Language implements Serializable
 			AD_Language_es_MX,  new Locale("es","MX"), new Boolean(true), "dd/MM/yyyy",
 			MediaSize.NA.LETTER),*/
 		new Language ("Espa\u00f1ol (CO)",
-			AD_Language_es_CO,  new Locale("es","ES"), new Boolean(false), "dd/MM/yyyy",
+			AD_Language_es_CO,  new Locale("en","CO"), new Boolean(false), "dd/MM/yyyy",
 			MediaSize.NA.LETTER),
 		/*new Language ("Espa\u00f1ol (VE)",
 			AD_Language_es_ES,  new Locale("es","ES"), new Boolean(false), "dd/MM/yyyy",

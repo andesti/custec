@@ -155,7 +155,8 @@ public abstract class CreateFrom implements ICreateFrom
 
 		Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 		StringBuffer sql = new StringBuffer("SELECT "
-			+ "l.QtyOrdered-SUM(COALESCE(m.Qty,0)),"					//	1
+			//+ "l.QtyOrdered-SUM(COALESCE(m.Qty,0)),"	//	1
+				+ "l.QtyOrdered-l.QtyDeivered,"
 			+ "CASE WHEN l.QtyOrdered=0 THEN 0 ELSE l.QtyEntered/l.QtyOrdered END,"	//	2
 			+ " l.C_UOM_ID,COALESCE(uom.UOMSymbol,uom.Name),"			//	3..4
 			+ " COALESCE(l.M_Product_ID,0),COALESCE(p.Name,c.Name),po.VendorProductNo,"	//	5..7
@@ -194,7 +195,7 @@ public abstract class CreateFrom implements ICreateFrom
 				BigDecimal qtyOrdered = rs.getBigDecimal(1);
 				BigDecimal multiplier = rs.getBigDecimal(2);
 				BigDecimal qtyEntered = qtyOrdered.multiply(multiplier);
-				line.add(qtyEntered);                   //  1-Qty
+				line.add(qtyOrdered);                   //  1-Qty
 				KeyNamePair pp = new KeyNamePair(rs.getInt(3), rs.getString(4).trim());
 				line.add(pp);                           //  2-UOM
 				pp = new KeyNamePair(rs.getInt(5), rs.getString(6));
