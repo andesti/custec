@@ -193,8 +193,8 @@ public abstract class CreateFrom implements ICreateFrom
 				Vector<Object> line = new Vector<Object>();
 				line.add(new Boolean(false));           //  0-Selection
 				BigDecimal qtyOrdered = rs.getBigDecimal(1);
-				BigDecimal multiplier = rs.getBigDecimal(2);
-				BigDecimal qtyEntered = qtyOrdered.multiply(multiplier);
+			/*	BigDecimal multiplier = rs.getBigDecimal(2);
+				BigDecimal qtyEntered = qtyOrdered.multiply(multiplier);*/
 				line.add(qtyOrdered);                   //  1-Qty
 				KeyNamePair pp = new KeyNamePair(rs.getInt(3), rs.getString(4).trim());
 				line.add(pp);                           //  2-UOM
