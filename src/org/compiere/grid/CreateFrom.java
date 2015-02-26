@@ -156,7 +156,7 @@ public abstract class CreateFrom implements ICreateFrom
 		Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 		StringBuffer sql = new StringBuffer("SELECT "
 			//+ "l.QtyOrdered-SUM(COALESCE(m.Qty,0)),"	//	1
-				+ "l.QtyOrdered-l.QtyDeivered,"
+				+ "l.QtyOrdered-l.QtyDelivered,"
 			+ "CASE WHEN l.QtyOrdered=0 THEN 0 ELSE l.QtyEntered/l.QtyOrdered END,"	//	2
 			+ " l.C_UOM_ID,COALESCE(uom.UOMSymbol,uom.Name),"			//	3..4
 			+ " COALESCE(l.M_Product_ID,0),COALESCE(p.Name,c.Name),po.VendorProductNo,"	//	5..7
@@ -175,7 +175,7 @@ public abstract class CreateFrom implements ICreateFrom
 				.append(Env.getAD_Language(Env.getCtx())).append("')");
 		//
 		sql.append(" WHERE l.C_Order_ID=? "			//	#1
-			+ "GROUP BY l.QtyOrdered,CASE WHEN l.QtyOrdered=0 THEN 0 ELSE l.QtyEntered/l.QtyOrdered END, "
+			+ "GROUP BY l.QtyOrdered, l.QtyDelivered, CASE WHEN l.QtyOrdered=0 THEN 0 ELSE l.QtyEntered/l.QtyOrdered END, "
 			+ "l.C_UOM_ID,COALESCE(uom.UOMSymbol,uom.Name),po.VendorProductNo, "
 				+ "l.M_Product_ID,COALESCE(p.Name,c.Name), l.Line,l.C_OrderLine_ID "
 			+ "ORDER BY l.Line");
