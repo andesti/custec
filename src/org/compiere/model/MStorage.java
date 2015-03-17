@@ -708,21 +708,30 @@ public class MStorage extends X_M_Storage
 					+ " INNER JOIN M_Locator l ON (s.M_Locator_ID=l.M_Locator_ID) "
 					+ "WHERE s.M_Product_ID=?"		//	#1
 					+ " AND l.M_Warehouse_ID=?"
-					+ " AND l.M_Locator_ID=?"
-					+ " AND s.M_AttributeSetInstance_ID<>?";
-				BigDecimal QtyOnHand = DB.getSQLValueBDEx(get_TrxName(), sql, new Object[] {getM_Product_ID(), getM_Warehouse_ID(), getM_Locator_ID(), getM_AttributeSetInstance_ID()});
+					+ " AND l.M_Locator_ID=?";
+			//		+ " AND s.M_AttributeSetInstance_ID<>?"; Eliminada la linea de atributos
+			//	 BigDecimal QtyOnHand = DB.getSQLValueBDEx(get_TrxName(), sql, new Object[] {getM_Product_ID(), getM_Warehouse_ID(), getM_Locator_ID(), getM_AttributeSetInstance_ID()});
+				BigDecimal QtyOnHand = DB.getSQLValueBDEx(get_TrxName(), sql, new Object[] {getM_Product_ID(), getM_Warehouse_ID(), getM_Locator_ID()});
 				if (QtyOnHand == null)
 					QtyOnHand = Env.ZERO;
-				
 				// Add qty onhand for current record
 				QtyOnHand = QtyOnHand.add(getQtyOnHand());
+				// double vCantidad = getQtyOnHand().compareTo(BigDecimal.ZERO);
+				if (QtyOnHand.compareTo(Env.ZERO) <= 0)
+				{
+					log.saveError("Error", Msg.getMsg(getCtx(), "NegativeInventoryDisallowed"));
+					return false;
+				}
 				
-				if (getQtyOnHand().compareTo(BigDecimal.ZERO) < 0 ||
+				
+
+	/*			if (getQtyOnHand().compareTo(BigDecimal.ZERO) < 0 ||
 						QtyOnHand.compareTo(Env.ZERO) < 0)
 				{
 					log.saveError("Error", Msg.getMsg(getCtx(), "NegativeInventoryDisallowed"));
 					return false;
 				}
+	*/
 			}
 		}
 
