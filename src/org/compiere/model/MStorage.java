@@ -716,14 +716,11 @@ public class MStorage extends X_M_Storage
 					QtyOnHand = Env.ZERO;
 				// Add qty onhand for current record
 				QtyOnHand = QtyOnHand.add(getQtyOnHand());
-				// double vCantidad = getQtyOnHand().compareTo(BigDecimal.ZERO);
 				if (QtyOnHand.compareTo(Env.ZERO) <= 0)
 				{
 					log.saveError("Error", Msg.getMsg(getCtx(), "NegativeInventoryDisallowed"));
 					return false;
-				}
-				
-				
+				}		
 
 	/*			if (getQtyOnHand().compareTo(BigDecimal.ZERO) < 0 ||
 						QtyOnHand.compareTo(Env.ZERO) < 0)
