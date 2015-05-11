@@ -2,7 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/adempiereTrunk"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/LCO"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LCO">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="LCO"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/adempiereTrunk"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
