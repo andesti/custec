@@ -26,7 +26,6 @@ import org.compiere.apps.*;
 import org.compiere.model.*;
 import org.compiere.swing.*;
 import org.compiere.util.*;
-import org.globalqss.model.X_LCO_TaxIdType;
 
 /**
  *        Business Partner Editor.

@@ -234,7 +234,8 @@ public class VInOutGen extends InOutGen implements FormPanel, ActionListener, Ve
 	public String generate()
 	{
 		KeyNamePair docTypeKNPair = (KeyNamePair)cmbDocType.getSelectedItem();
-		String docActionSelected = (String)docAction.getValue();	
+		//String docActionSelected = (String)docAction.getValue();	
+		String docActionSelected = "IP";
 		return generate(panel.getStatusBar(), docTypeKNPair, docActionSelected);
 	}	//	generateShipments
 }
